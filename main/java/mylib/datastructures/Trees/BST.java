@@ -5,7 +5,7 @@ import java.util.Queue;
 import main.java.mylib.datastructures.nodes.TNode;
 
 public class BST {
-    private TNode root;
+    protected TNode root;
     
     // Default constructor
     public BST() {
