@@ -239,4 +239,41 @@ public void printBF() {
         System.out.println();
     }
 }
+
+
+
+    public static void main(String[] args) {
+        // create a new binary search tree
+        BST tree = new BST();
+
+        // insert some values
+        tree.insert(50);
+        tree.insert(30);
+        tree.insert(70);
+        tree.insert(20);
+        tree.insert(40);
+        tree.insert(60);
+        tree.insert(80);
+
+        // print the tree contents in ascending order
+        System.out.print("In-order traversal: ");
+        tree.printInOrder();
+        System.out.println();
+
+        // print the tree contents in breadth-first order
+        System.out.println("Breadth-first traversal:");
+        tree.printBF();
+
+        // search for a value
+        TNode found = tree.search(40);
+        System.out.println("Node found: " + found);
+
+        // delete a value
+        tree.delete(30);
+
+        // print the tree contents in breadth-first order again
+        System.out.println("Breadth-first traversal after deletion:");
+        tree.printBF();
+    }
 }
+
