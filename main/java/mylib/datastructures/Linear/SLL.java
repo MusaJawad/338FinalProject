@@ -3,10 +3,10 @@ package main.java.mylib.datastructures.Linear;
 import main.java.mylib.datastructures.nodes.DNode;
 
 public class SLL {
-    private DNode head;
+    protected DNode head;
     private DNode tail;
-    private int size;
-    private boolean sorted;
+    protected int size;
+    protected boolean sorted;
 
 
     public SLL() {

@@ -5,8 +5,8 @@ import main.java.mylib.datastructures.nodes.DNode;
 public class DLL {
     private DNode head;
     private DNode tail;
-    private int size;
-    private boolean sorted;
+    protected int size;
+    protected boolean sorted;
 
     public DLL() {
         head = null;
