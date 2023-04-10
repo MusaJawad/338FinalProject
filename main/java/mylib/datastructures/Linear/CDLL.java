@@ -11,50 +11,112 @@ public class CDLL extends DLL{
 
     public CDLL(DNode node) {
         super(node);
+        head = node;
+        tail = node;
         head.prev = tail;
         tail.next = head;
     }
 
     @Override
     public void insertHead(DNode node) {
-        super.insertHead(node);
-        head.prev = tail;
-        tail.next = head;
+        if (head == null) {
+            head = node;
+            tail = node;
+            head.prev = tail;
+            tail.next = head;
+        } else {
+            node.next = head;
+            head.prev = node;
+            head = node;
+            head.prev = tail;
+            tail.next = head;
+        }
     }
 
     @Override
     public void insertTail(DNode node) {
-        super.insertTail(node);
-        head.prev = tail;
-        tail.next = head;
+        if (tail == null) {
+            head = node;
+            tail = node;
+            head.prev = tail;
+            tail.next = head;
+        } else {
+            node.prev = tail;
+            tail.next = node;
+            tail = node;
+            tail.next = head;
+            head.prev = tail;
+        }
     }
 
     @Override
     public void insert(DNode node, int position) {
-        super.insert(node, position);
-        head.prev = tail;
-        tail.next = head;
+        if (position == 0) {
+            insertHead(node);
+        } else {
+            DNode current = head;
+            int i = 0;
+            while (current != null && i < position - 1) {
+                current = current.next;
+                i++;
+            }
+            if (current == null) {
+                insertTail(node);
+            } else {
+                node.next = current.next;
+                current.next.prev = node;
+                current.next = node;
+                node.prev = current;
+            }
+        }
     }
+    
 
     @Override
     public void deleteHead() {
-        super.deleteHead();
-        head.prev = tail;
-        tail.next = head;
+        if (head == null) {
+            return;
+        }
+        if (head == tail) {
+            head = null;
+            tail = null;
+        } else {
+            head = head.next;
+            head.prev = tail;
+            tail.next = head;
+        }
     }
-
+    
     @Override
     public void deleteTail() {
-        super.deleteTail();
-        head.prev = tail;
-        tail.next = head;
+        if (tail == null) {
+            return;
+        }
+        if (head == tail) {
+            head = null;
+            tail = null;
+        } else {
+            tail = tail.prev;
+            tail.next = head;
+            head.prev = tail;
+        }
     }
 
     @Override
     public void delete(DNode node) {
-        super.delete(node);
-        head.prev = tail;
-        tail.next = head;
+        if (node == null) {
+            return;
+        }
+        if (node == head) {
+            deleteHead();
+            return;
+        }
+        if (node == tail) {
+            deleteTail();
+            return;
+        }
+        node.prev.next = node.next;
+        node.next.prev = node.prev;
     }
 
     @Override
@@ -67,11 +129,15 @@ public class CDLL extends DLL{
     @Override
     public void print() {
         System.out.print("List content: ");
-        DNode current = head;
-        do {
-            System.out.print(current.data + " ");
-            current = current.next;
-        } while (current != head);
+        if (head != null) {
+            DNode current = head;
+            do {
+                System.out.print(current.data + " ");
+                current = current.next;
+            } while (current != head);
+        } else {
+            System.out.print("empty");
+        }
         System.out.println();
     }
 
