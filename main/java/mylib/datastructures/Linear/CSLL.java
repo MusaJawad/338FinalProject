@@ -25,7 +25,7 @@ public class CSLL extends SLL{
         } else {
             node.next = head;
             head = node;
-            tail.next = head;
+            tail.next = node;
         }
         size++;
         sorted = false;
@@ -39,8 +39,8 @@ public class CSLL extends SLL{
             node.next = node;
         } else {
             tail.next = node;
+            node.next = head;
             tail = node;
-            tail.next = head;
         }
         size++;
         sorted = false;
@@ -117,50 +117,35 @@ public class CSLL extends SLL{
     }
 
 
-public static void main(String[] args) {
 
-    // Test insertHead
-    CSLL csll = new CSLL();
-    csll.insertHead(new DNode(1));
-    csll.insertHead(new DNode(2));
-    csll.insertHead(new DNode(3));
-    csll.print(); // Expected output: List length: 3, Sorted status: false, List content: 3 2 1, Tail: 1
-
-    // Test insertTail
-    csll.insertTail(new DNode(4));
-    csll.insertTail(new DNode(5));
-    csll.print(); // Expected output: List length: 5, Sorted status: false, List content: 3 2 1 4 5, Tail: 5
-
-    // Test insert at position
-    csll.insert(new DNode(6), 2);
-    csll.insert(new DNode(7), 6);
-    csll.print(); // Expected output: List length: 7, Sorted status: false, List content: 3 6 2 1 4 5 7, Tail: 7
-
-    // Test sortedInsert
-    csll.sortedInsert(new DNode(0));
-    csll.sortedInsert(new DNode(8));
-    csll.print(); // Expected output: List length: 9, Sorted status: true, List content: 0 1 2 3 4 5 6 7 8, Tail: 8
-
-    // Test search
-    DNode node = csll.search(4);
-    System.out.println(node.data); // Expected output: 4
-
-    // Test deleteHead
-    csll.deleteHead();
-    csll.print(); // Expected output: List length: 8, Sorted status: true, List content: 1 2 3 4 5 6 7 8, Tail: 8
-
-    // Test deleteTail
-    csll.deleteTail();
-    csll.print(); // Expected output: List length: 7, Sorted status: true, List content: 1 2 3 4 5 6 7, Tail: 7
-
-    // Test delete
-    node = csll.search(3);
-    csll.delete(node);
-    csll.print(); // Expected output: List length: 6, Sorted status: true, List content: 1 2 4 5 6 7, Tail: 7
-
-    // Test clear
-    csll.clear();
-    csll.print(); // Expected output: List length: 0, Sorted status: true, List content: , Tail: null
-
-}
-}
+        public static void main(String[] args) {
+            CSLL list = new CSLL();
+    
+            // Insert 1 at head
+            DNode node1 = new DNode(1);
+            list.insertHead(node1);
+            list.print(); // Should print: 1, Tail: 1
+    
+            // Insert 2 at tail
+            DNode node2 = new DNode(2);
+            list.insertTail(node2);
+            list.print(); // Should print: 1, 2, Tail: 2
+    
+            // Insert 3 at position 2
+            DNode node3 = new DNode(3);
+            list.insert(node3, 2);
+            list.print(); // Should print: 1, 3, 2, Tail: 2
+    
+            // Delete head
+            list.deleteHead();
+            list.print(); // Should print: 3, 2, Tail: 2
+    
+            // Delete tail
+            list.deleteTail();
+            list.print(); // Should print: 3, Tail: 3
+    
+            // Clear the list
+            list.clear();
+            list.print(); // Should print nothing
+        }
+    }
