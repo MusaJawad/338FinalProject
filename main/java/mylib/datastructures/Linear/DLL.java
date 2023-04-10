@@ -49,20 +49,20 @@ public class DLL {
     }
 
     public void insert(DNode node, int position) {
-        if (position < 1 || position > size + 1) {
+        if (position < 0 || position > size ) {
             System.out.println("Invalid position");
             return;
         }
-        if (position == 1) {
+        if (position == 0) {
             insertHead(node);
             return;
         }
-        if (position == size + 1) {
+        if (position == size) {
             insertTail(node);
             return;
         }
         DNode current = head;
-        for (int i = 1; i < position - 1; i++) {
+        for (int i = 1; i < position; i++) {
             current = current.next;
         }
         node.next = current.next;
@@ -158,23 +158,33 @@ public class DLL {
         size--;
     }
     
+   
+    
     public void delete(DNode node) {
-        if (node == null) {
+        if (head == null) {
             return;
         }
-        if (node == head) {
+        if (head == node) {
             deleteHead();
             return;
         }
-        if (node == tail) {
+        if (tail == node) {
             deleteTail();
             return;
         }
-        node.prev.next = node.next;
-        node.next.prev = node.prev;
-        size--;
+        DNode current = head;
+
+        while (current.next != node && current.next != null) {
+            current = current.next;
+        }
+
+        if (current.next != null) {
+            current.next = current.next.next;
+            size--;
+        }        
     }
-    
+
+
     public void reverse() {
         if (head == null) {
             return;
@@ -190,7 +200,10 @@ public class DLL {
         head = tail;
         tail = temp;
     }
+  
     public void print() {
+        System.out.println("List length: " + size);
+        System.out.println("Sorted status: " + sorted);
         System.out.print("List content: ");
         DNode current = head;
         while (current != null) {
@@ -201,43 +214,48 @@ public class DLL {
     }
 
 
+    public void clear() {
+        head = null;
+        tail = null;
+        size = 0;
+        sorted = false;
+    }
 
+   
+    public static void main(String[] args){
+        DNode node = new DNode(2);
+        DNode node1 = new DNode(10);
+        DNode node2 = new DNode(4);
+        DNode node3 = new DNode(1);
+        DNode node4 = new DNode(12);
+        DLL test = new DLL(node);
+        DLL test1 = new DLL();
+        // Testing methods:
+        System.out.println("For test (Overloaded CTOR)");
+        test.insert(node1, 1);
+        test.insert(node2, 2);
+        test.insert(node3, 3);
+        test.insert(node4, 4);
+        test.print();
+        System.out.println("\nFor test (Default CTOR)");
+        test1.insertHead(node2);
+        test1.insert(node1, 1);
+        test1.insert(node3, 2);
+        test1.print();
+        System.out.println("\nTesting sorting");
+        test.sort();
+        test.print();
+        System.out.println("\nTesting searching");
+        System.out.println(test.search(10).data); // Expected 10
 
-    public static void main(String[] args) {
-        DLL dll = new DLL();
-        DNode node1 = new DNode(1);
-        DNode node2 = new DNode(2);
-        DNode node3 = new DNode(3);
-        DNode node4 = new DNode(4);
-        DNode node5 = new DNode(5);
-        
-        dll.insertHead(node1);
-        dll.insertHead(node2);
-        dll.insertTail(node3);
-        dll.insert(node4, 2);
-        dll.sortedInsert(node5);
-        dll.print(); // List content: 2 4 1 5 3
-        
-        DNode searchResult = dll.search(5);
-        if (searchResult != null) {
-            System.out.println("Found node with value " + searchResult.data); // Found node with value 5
-        } else {
-            System.out.println("Node not found");
-        }
-        
-        dll.deleteHead();
-        dll.deleteTail();
-        dll.delete(node4);
-        dll.reverse();
-        dll.print(); // List content: 3 1
-        
-        DLL sortedDll = new DLL(node5);
-        sortedDll.sortedInsert(node1);
-        sortedDll.sortedInsert(node3);
-        sortedDll.sortedInsert(node4);
-        sortedDll.sortedInsert(node2);
-        sortedDll.print(); // List content: 1 2 3 4 5
+        System.out.println("\nTesting removal");
+        test.delete(node2);
+        test.deleteHead();
+        test.deleteTail();
+        test.print();
     }
 }
+
+
 
       

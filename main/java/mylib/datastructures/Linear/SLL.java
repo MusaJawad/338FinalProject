@@ -169,14 +169,10 @@ public class SLL {
             current = current.next;
         }
 
-
         if (current.next != null) {
             current.next = current.next.next;
             size--;
-        }
-
-        
-        
+        }        
     }
 
     public void sort() {
@@ -236,5 +232,52 @@ public class SLL {
         return true;
     }
 
+
+    public static void main(String[] args) {
+        SLL myList = new SLL();
+
+        // Add nodes to the list
+        myList.insertTail(new DNode(1));
+        myList.insertTail(new DNode(4));
+        myList.insertHead(new DNode(5));
+        myList.insert(new DNode(7), 1);
+        myList.insert(new DNode(3), 3);
+
+        // Print the list
+        System.out.println("Original list:");
+        myList.print();
+
+        // Search for a node
+        DNode searchResult = myList.search(4);
+        System.out.println("Search result:"+searchResult.data);
+   
+
+        // Delete a node
+        
+        DNode tmpp = new DNode(2);
+        myList.insertTail(tmpp);
+        System.out.println("List contents:");
+        myList.print();
+        myList.delete(tmpp);
+        System.out.println("List after deleting node containing 2:");
+        myList.print();
+
+        // Sort the list
+        myList.sort();
+        System.out.println("List after sorting:");
+        myList.print();
+
+        // Delete the head and tail of the list
+        myList.deleteHead();
+        myList.deleteTail();
+        System.out.println("List after deleting head and tail:");
+        myList.print();
+
+        // Add a node at position 1
+        myList.insert(new DNode(6), 1);
+        System.out.println("List after adding node 6 at position 1:");
+        myList.print();
+
+    }
 
 }
