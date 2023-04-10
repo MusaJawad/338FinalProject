@@ -47,21 +47,21 @@ public class SLL {
         sorted = false;
     }
 
+   
     public void insert(DNode node, int position) {
-        if (position < 1 || position > size + 1) {
-            System.out.println("Invalid position");
-            return;
+        if (position < 0 || position > size + 0) {
+            throw new IllegalArgumentException("The position is out of index");
         }
-        if (position == 1) {
+        if (position == 0) {
             insertHead(node);
             return;
         }
-        if (position == size + 1) {
+        if (position == size) {
             insertTail(node);
             return;
         }
         DNode current = head;
-        for (int i = 1; i < position - 1; i++) {
+        for (int i = 1; i < position; i++) {
             current = current.next;
         }
         node.next = current.next;
@@ -70,6 +70,7 @@ public class SLL {
         sorted = false;
     }
 
+    
     public void sortedInsert(DNode node) {
         if (!sorted) {
             sort();
@@ -128,6 +129,28 @@ public class SLL {
         size--;
     }
 
+    public void delete(int data) {
+        if (head == null) {
+            return;
+        }
+        if (head.data == data) {
+            deleteHead();
+            return;
+        }
+        DNode current = head;
+        while (current.next != null && current.next.data != data) {
+            current = current.next;
+        }
+        if (current.next != null) {
+            if (current.next == tail) {
+                deleteTail();
+            } else {
+                current.next = current.next.next;
+                size--;
+            }
+        }
+    }
+
     public void delete(DNode node) {
         if (head == null) {
             return;
@@ -141,12 +164,21 @@ public class SLL {
             return;
         }
         DNode current = head;
-        while (current.next != node) {
+
+        while (current.next != node && current.next != null) {
             current = current.next;
         }
-        current.next = current.next.next;
-        size--;
+
+
+        if (current.next != null) {
+            current.next = current.next.next;
+            size--;
+        }
+
+        
+        
     }
+
     public void sort() {
         if (size <= 1) {
             return;
@@ -204,52 +236,5 @@ public class SLL {
         return true;
     }
 
-
-    public static void main(String[] args) {
-
-        // Test insertHead
-        SLL sll = new SLL();
-        sll.insertHead(new DNode(1));
-        sll.insertHead(new DNode(2));
-        sll.insertHead(new DNode(3));
-        sll.print(); // Expected output: List length: 3, Sorted status: false, List content: 3 2 1
-
-        // Test insertTail
-        sll.insertTail(new DNode(4));
-        sll.insertTail(new DNode(5));
-        sll.print(); // Expected output: List length: 5, Sorted status: false, List content: 3 2 1 4 5
-
-        // Test insert at position
-        sll.insert(new DNode(6), 2);
-        sll.insert(new DNode(7), 6);
-        sll.print(); // Expected output: List length: 7, Sorted status: false, List content: 3 6 2 1 4 5 7
-
-        // Test sortedInsert
-        sll.sortedInsert(new DNode(0));
-        sll.sortedInsert(new DNode(8));
-        sll.print(); // Expected output: List length: 9, Sorted status: true, List content: 0 1 2 3 4 5 6 7 8
-
-        // Test search
-        DNode node = sll.search(4);
-        System.out.println(node.data); // Expected output: 4
-
-        // Test deleteHead
-        sll.deleteHead();
-        sll.print(); // Expected output: List length: 8, Sorted status: true, List content: 1 2 3 4 5 6 7 8
-
-        // Test deleteTail
-        sll.deleteTail();
-        sll.print(); // Expected output: List length: 7, Sorted status: true, List content: 1 2 3 4 5 6 7
-
-        // Test delete
-        node = sll.search(3);
-        sll.delete(node);
-        sll.print(); // Expected output: List length: 6, Sorted status: true, List content: 1 2 4 5 6 7
-
-        // Test clear
-        sll.clear();
-        sll.print(); // Expected output: List length: 0, Sorted status: true, List content: 
-
-    }
 
 }
