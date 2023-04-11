@@ -13,17 +13,17 @@ public class CDLL extends DLL{
         super(node);
         head = node;
         tail = node;
-        head.prev = tail;
-        tail.next = head;
+        head.next = tail;
+        tail.prev = head;
     }
 
-    @Override
+   @Override
     public void insertHead(DNode node) {
         if (head == null) {
             head = node;
             tail = node;
-            head.prev = tail;
-            tail.next = head;
+            head.next = tail;
+            tail.prev = head;
         } else {
             node.next = head;
             head.prev = node;
@@ -31,6 +31,7 @@ public class CDLL extends DLL{
             head.prev = tail;
             tail.next = head;
         }
+        size++;
     }
 
     @Override
@@ -38,8 +39,8 @@ public class CDLL extends DLL{
         if (tail == null) {
             head = node;
             tail = node;
-            head.prev = tail;
-            tail.next = head;
+            head.next = tail;
+            tail.prev = head;
         } else {
             node.prev = tail;
             tail.next = node;
@@ -47,6 +48,7 @@ public class CDLL extends DLL{
             tail.next = head;
             head.prev = tail;
         }
+        size++;
     }
 
     @Override
@@ -85,6 +87,7 @@ public class CDLL extends DLL{
             head.prev = tail;
             tail.next = head;
         }
+        size--;
     }
     
     @Override
@@ -100,6 +103,7 @@ public class CDLL extends DLL{
             tail.next = head;
             head.prev = tail;
         }
+        size--;
     }
 
     @Override
@@ -121,9 +125,23 @@ public class CDLL extends DLL{
 
     @Override
     public void reverse() {
-        super.reverse();
-        head.prev = tail;
-        tail.next = head;
+        if (head == null || head == tail) {
+            return;
+        }
+    
+        DNode current = head;
+        DNode temp = null;
+    
+        do {
+            temp = current.prev;
+            current.prev = current.next;
+            current.next = temp;
+            current = current.prev;
+        } while (current != head);
+    
+        temp = head;
+        head = tail;
+        tail = temp;
     }
 
     @Override
