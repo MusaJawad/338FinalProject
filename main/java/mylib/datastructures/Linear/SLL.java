@@ -214,9 +214,19 @@ public class SLL {
         while (current != null) {
             System.out.print(current.data + " ");
             current = current.next;
+            if (current == head) { // added condition to break out of the loop
+                break;
+            }
         }
         System.out.println();
     }
+    
+    
+    
+    
+    
+    
+    
     
     private boolean isSorted() {
         if (size <= 1) {

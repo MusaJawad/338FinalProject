@@ -113,38 +113,55 @@ public class CSLL extends SLL{
     @Override
     public void print() {
         super.print();
-        System.out.println("Tail: " + tail.data);
+
+
+        if(tail != null){
+            System.out.println("Tail: " + tail.data);
+        }
+        else{
+            System.out.println("Tail: ");
+
+        }
     }
+
+
 
 
 
         public static void main(String[] args) {
             CSLL list = new CSLL();
     
-            // Insert 1 at head
+            
+            System.out.println("Insert 1 at head");
             DNode node1 = new DNode(1);
             list.insertHead(node1);
             list.print(); // Should print: 1, Tail: 1
+            System.out.println();
     
-            // Insert 2 at tail
+            System.out.println("// Insert 2 at tail");
             DNode node2 = new DNode(2);
             list.insertTail(node2);
             list.print(); // Should print: 1, 2, Tail: 2
-    
-            // Insert 3 at position 2
+            System.out.println();
+  
+            System.out.println("// Insert 3 at position 2");
             DNode node3 = new DNode(3);
             list.insert(node3, 2);
             list.print(); // Should print: 1, 3, 2, Tail: 2
-    
-            // Delete head
+            System.out.println();
+  
+
+            System.out.println("// Delete head");
             list.deleteHead();
             list.print(); // Should print: 3, 2, Tail: 2
-    
-            // Delete tail
+            System.out.println();
+  
+            System.out.println("// Delete tail");
             list.deleteTail();
             list.print(); // Should print: 3, Tail: 3
-    
-            // Clear the list
+            System.out.println();
+  
+            System.out.println("// Clear the list");
             list.clear();
             list.print(); // Should print nothing
         }
