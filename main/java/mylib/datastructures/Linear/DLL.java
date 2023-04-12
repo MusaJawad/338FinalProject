@@ -290,39 +290,6 @@ public class DLL {
         sorted = false;
     }
 
-   
-    public static void main(String[] args){
-        DNode node = new DNode(2);
-        DNode node1 = new DNode(10);
-        DNode node2 = new DNode(4);
-        DNode node3 = new DNode(1);
-        DNode node4 = new DNode(12);
-        DLL test = new DLL(node);
-        DLL test1 = new DLL();
-        // Testing methods:
-        System.out.println("For test (Overloaded CTOR)");
-        test.insert(node1, 1);
-        test.insert(node2, 2);
-        test.insert(node3, 3);
-        test.insert(node4, 4);
-        test.print();
-        System.out.println("\nFor test (Default CTOR)");
-        test1.insertHead(node2);
-        test1.insert(node1, 1);
-        test1.insert(node3, 2);
-        test1.print();
-        System.out.println("\nTesting sorting");
-        test.sort();
-        test.print();
-        System.out.println("\nTesting searching");
-        System.out.println(test.search(10).data); // Expected 10
-
-        System.out.println("\nTesting removal");
-        test.delete(node2);
-        test.deleteHead();
-        test.deleteTail();
-        test.print();
-    }
 }
 
 

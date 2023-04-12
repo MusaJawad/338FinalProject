@@ -220,41 +220,6 @@ import main.java.mylib.datastructures.nodes.TNode;
     public TNode getNode(int val) {
         return getNode(val, root);
     }
-
-
-
-
-    public static void main(String[] args) {
-        AVL avl = new AVL(10);
-        avl.insert(5);
-        avl.insert(3);
-
-        avl.insert(12);
-        avl.insert(15);
-        avl.insert(8);
-        avl.insert(9);
-        
-        System.out.println("Printing in-order traversal of AVL tree:");
-        avl.printInOrder();
-        
-        System.out.println("\nPrinting breadth-first traversal of AVL tree:");
-        avl.printBF();
-        
-        System.out.println("\nDeleting node with value 8...");
-        avl.delete(8);
-        System.out.println("Printing in-order traversal of AVL tree after deletion:");
-        avl.printInOrder();
-        
-        System.out.println("\nDeleting node with value 10...");
-        avl.delete(10);
-        System.out.println("Printing in-order traversal of AVL tree after deletion:");
-        avl.printInOrder();
-        
-        System.out.println("\nInserting node with value 11...");
-        avl.insert(11);
-        System.out.println("Printing in-order traversal of AVL tree after insertion:");
-        avl.printInOrder();
-    }
     
 }
     

@@ -2,20 +2,46 @@ package main.java.mylib.datastructures.Linear;
 
 import main.java.mylib.datastructures.nodes.DNode;
 
+
+
+/**
+
+CSLL is a circular singly linked list that extends the SLL class.
+
+It adds the functionality to maintain a reference to the tail of the list and supports circular traversal.
+*/
+
+
 public class CSLL extends SLL{
+
+    /**
+    Reference to the tail of the list.
+    */
     private DNode tail;
 
+
+    /**
+    Constructs an empty circular singly linked list.
+    */
     public CSLL() {
         super();
         tail = null;
     }
 
+    /**
+    Constructs a circular singly linked list with the given head node.
+    @param head the first node of the list
+    */
     public CSLL(DNode head) {
         super(head);
         tail = head;
         tail.next = head;
     }
 
+    /**
+    Inserts a node at the beginning of the list.
+    @param node the node to insert
+    */
     @Override
     public void insertHead(DNode node) {
         if (head == null) {
@@ -31,6 +57,10 @@ public class CSLL extends SLL{
         sorted = false;
     }
 
+    /**
+    Inserts a node at the end of the list.
+    @param node the node to insert
+    */
     @Override
     public void insertTail(DNode node) {
         if (head == null) {
@@ -46,6 +76,13 @@ public class CSLL extends SLL{
         sorted = false;
     }
 
+
+
+    /**
+    Inserts a node at the given position in the list.
+    @param node the node to insert
+    @param position the position at which to insert the node
+    */
     @Override
     public void insert(DNode node, int position) {
         if (position < 1 || position > size + 1) {
@@ -70,6 +107,10 @@ public class CSLL extends SLL{
         sorted = false;
     }
 
+
+    /**
+    Deletes the first node of the list.
+    */
     @Override
     public void deleteHead() {
         if (head == null) {
@@ -84,6 +125,11 @@ public class CSLL extends SLL{
         }
         size--;
     }
+
+
+    /**
+    Deletes the last node of the list.
+    */
 
     @Override
     public void deleteTail() {
@@ -104,12 +150,23 @@ public class CSLL extends SLL{
         size--;
     }
 
+
+
+    /**
+    Deletes all nodes and information
+    */
     @Override
     public void clear() {
         super.clear();
         tail = null;
     }
 
+
+
+
+    /**
+    Prints all the information
+    */
     @Override
     public void print() {
         super.print();
@@ -124,45 +181,4 @@ public class CSLL extends SLL{
         }
     }
 
-
-
-
-
-        public static void main(String[] args) {
-            CSLL list = new CSLL();
-    
-            
-            System.out.println("Insert 1 at head");
-            DNode node1 = new DNode(1);
-            list.insertHead(node1);
-            list.print(); // Should print: 1, Tail: 1
-            System.out.println();
-    
-            System.out.println("// Insert 2 at tail");
-            DNode node2 = new DNode(2);
-            list.insertTail(node2);
-            list.print(); // Should print: 1, 2, Tail: 2
-            System.out.println();
-  
-            System.out.println("// Insert 3 at position 2");
-            DNode node3 = new DNode(3);
-            list.insert(node3, 2);
-            list.print(); // Should print: 1, 3, 2, Tail: 2
-            System.out.println();
-  
-
-            System.out.println("// Delete head");
-            list.deleteHead();
-            list.print(); // Should print: 3, 2, Tail: 2
-            System.out.println();
-  
-            System.out.println("// Delete tail");
-            list.deleteTail();
-            list.print(); // Should print: 3, Tail: 3
-            System.out.println();
-  
-            System.out.println("// Clear the list");
-            list.clear();
-            list.print(); // Should print nothing
-        }
     }

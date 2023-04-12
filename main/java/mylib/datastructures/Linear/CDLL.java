@@ -1,14 +1,26 @@
 package main.java.mylib.datastructures.Linear;
 
 import main.java.mylib.datastructures.nodes.DNode;
+/**
+ * CDLL is a circular doubly-linked list that extends DLL.
+ */
+public class CDLL extends DLL {
 
-public class CDLL extends DLL{
     private DNode head;
     private DNode tail;
+
+    /**
+     * Constructs an empty CDLL object.
+     */
     public CDLL() {
         super();
     }
 
+    /**
+     * Constructs a CDLL object with a specified node as its head and tail.
+     *
+     * @param node the node to be used as the head and tail of the CDLL
+     */
     public CDLL(DNode node) {
         super(node);
         head = node;
@@ -17,7 +29,12 @@ public class CDLL extends DLL{
         tail.prev = head;
     }
 
-   @Override
+    /**
+     * Inserts a node at the head of the CDLL.
+     *
+     * @param node the node to be inserted
+     */
+    @Override
     public void insertHead(DNode node) {
         if (head == null) {
             head = node;
@@ -34,6 +51,11 @@ public class CDLL extends DLL{
         size++;
     }
 
+    /**
+     * Inserts a node at the tail of the CDLL.
+     *
+     * @param node the node to be inserted
+     */
     @Override
     public void insertTail(DNode node) {
         if (tail == null) {
@@ -51,6 +73,12 @@ public class CDLL extends DLL{
         size++;
     }
 
+    /**
+     * Inserts a node at the specified position in the CDLL.
+     *
+     * @param node     the node to be inserted
+     * @param position the position at which to insert the node
+     */
     @Override
     public void insert(DNode node, int position) {
         if (position == 0) {
@@ -72,8 +100,10 @@ public class CDLL extends DLL{
             }
         }
     }
-    
 
+    /**
+     * Deletes the node at the head of the CDLL.
+     */
     @Override
     public void deleteHead() {
         if (head == null) {
@@ -89,7 +119,10 @@ public class CDLL extends DLL{
         }
         size--;
     }
-    
+
+    /**
+     * Deletes the node at the tail of the CDLL.
+     */
     @Override
     public void deleteTail() {
         if (tail == null) {
@@ -106,6 +139,11 @@ public class CDLL extends DLL{
         size--;
     }
 
+    /**
+     * Deletes a specified node from the CDLL.
+     *
+     * @param node the node to be deleted
+     */
     @Override
     public void delete(DNode node) {
         if (node == null) {
@@ -123,6 +161,12 @@ public class CDLL extends DLL{
         node.next.prev = node.prev;
     }
 
+
+    /**
+    Reverses the order of the elements in the circular doubly linked list.
+    If the list is empty or contains only one element, no changes are made.
+    This method modifies the list in place.
+    */
     @Override
     public void reverse() {
         if (head == null || head == tail) {
@@ -144,6 +188,10 @@ public class CDLL extends DLL{
         tail = temp;
     }
 
+    /**
+    Prints the contents of the circular doubly linked list to the console.
+    If the list is empty, the message "empty" is printed.
+    */
     @Override
     public void print() {
         System.out.print("List content: ");
@@ -157,41 +205,5 @@ public class CDLL extends DLL{
             System.out.print("empty");
         }
         System.out.println();
-    }
-
-    public static void main(String[] args) {
-        // Test constructor and insertHead
-        CDLL cdll = new CDLL(new DNode(1));
-        cdll.insertHead(new DNode(2));
-        cdll.insertHead(new DNode(3));
-        cdll.print(); // Expected output: List content: 3 2 1
-    
-        // Test insertTail
-        cdll.insertTail(new DNode(4));
-        cdll.insertTail(new DNode(5));
-        cdll.print(); // Expected output: List content: 3 2 1 4 5
-    
-        // Test insert at position
-        cdll.insert(new DNode(6), 2);
-        cdll.insert(new DNode(7), 6);
-        cdll.print(); // Expected output: List content: 3 2 6 1 4 5 7
-    
-        // Test deleteHead
-        cdll.deleteHead();
-        cdll.print(); // Expected output: List content: 2 6 1 4 5 7
-    
-        // Test deleteTail
-        cdll.deleteTail();
-        cdll.print(); // Expected output: List content: 2 6 1 4 5
-    
-        // Test delete
-        DNode node = cdll.search(4);
-        cdll.delete(node);
-        cdll.print(); // Expected output: List content: 2 6 1 5
-    
-        // Test reverse
-        cdll.reverse();
-        cdll.print(); // Expected output: List content: 5 1 6 2
-    
     }
 }

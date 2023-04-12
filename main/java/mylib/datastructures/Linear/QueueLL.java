@@ -97,21 +97,5 @@ public class QueueLL extends SLL {
         System.out.println("<- Rear");
     }
 
-    public static void main(String[] args) {
-        QueueLL queue = new QueueLL();
-        
-        // Add some elements to the queue
-        queue.enqueue(new DNode(1));
-        queue.enqueue(new DNode(2));
-        queue.enqueue(new DNode(3));
-        
-        // Display the queue
-        queue.display(); // Expected output: Queue length: 3, Front -> 1 2 3 <- Rear
-        
-        // Remove an element from the queue
-        queue.dequeue();
-        
-        // Display the queue again
-        queue.display(); // Expected output: Queue length: 2, Front -> 2 3 <- Rear
-    }
+    
 }

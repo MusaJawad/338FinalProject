@@ -85,16 +85,4 @@ public class StackLL extends SLL{
         // Not affiliated with stacks
         }
 
-    public static void main(String[] args) {
-        // Test StackLL
-        StackLL stack = new StackLL();
-        stack.push(new DNode(1));
-        stack.push(new DNode(2));
-        stack.push(new DNode(3));
-        stack.print(); // Expected output: List length: 3, Sorted status: false, List content: 3 2 1
-        stack.pop();
-        stack.print(); // Expected output: List length: 2, Sorted status: false, List content: 2 1
-        DNode top = stack.peek();
-        System.out.println(top.data); // Expected output: 2
-    }
 }

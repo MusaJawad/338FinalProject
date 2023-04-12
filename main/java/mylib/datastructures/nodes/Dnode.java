@@ -3,6 +3,8 @@ package main.java.mylib.datastructures.nodes;
 /**
 This class a general representation of a node in a doubly linked list
 */
+
+
 public class DNode {
     /**
      * Contains the data variable for the node,
