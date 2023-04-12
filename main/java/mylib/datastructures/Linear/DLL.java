@@ -2,13 +2,27 @@ package main.java.mylib.datastructures.Linear;
 
 import main.java.mylib.datastructures.nodes.DNode;
 
+/**
+ * This is a class for a doubly linked list
+ */
+
 public class DLL {
+    /**
+     * Contains values for the head and tail of the Dnode
+     * an integer variable with the size of the list
+     * a boolean variable for whether the list is sorted or not
+     */
     private DNode head;
     private DNode tail;
     protected int size;
     protected boolean sorted;
 
     public DLL() {
+         /**
+         * default constructor for DLL
+         * sets the head and tails of the Dnode to null, and size to 0
+         * the sorted flag is set to true
+         */
         head = null;
         tail = null;
         size = 0;
@@ -16,6 +30,11 @@ public class DLL {
     }
 
     public DLL(DNode head) {
+        /**
+         * Constructor for DLL, sets the head and tail reference to head, and size to 1
+         * The sorted flag is true because there is only one element
+         * @param head of Dnode
+         */
         this.head = head;
         this.tail = head;
         size = 1;
@@ -23,6 +42,11 @@ public class DLL {
     }
 
     public void insertHead(DNode node) {
+        /**
+         * This method inserts a new node at the head of the list.
+         * The size is increased by 1, and it is not sorted
+         * @param the node to be set as the new head of the list
+        */
         if (head == null) {
             head = node;
             tail = node;
@@ -36,6 +60,11 @@ public class DLL {
     }
 
     public void insertTail(DNode node) {
+        /**
+        * This method inserts a new node at the tail of the list.
+        * The size is increased by 1, and it is not sorted
+        * @param the node to be set as the new tail of the list
+       */
         if (tail == null) {
             head = node;
             tail = node;
@@ -49,6 +78,14 @@ public class DLL {
     }
 
     public void insert(DNode node, int position) {
+        /**
+         * This method inserts a new node at the a specified position of the list.
+         * The size is increased by 1, and it is not sorted
+         * There are checks if the position is the front or end of the list, or in between
+         * The node is then placed in the position specified
+         * @param node: the node to be added to the list
+         * @param position: the position the node will be added in the list
+        */
         if (position < 0 || position > size ) {
             System.out.println("Invalid position");
             return;
@@ -74,6 +111,10 @@ public class DLL {
     }
 
     public void sort() {
+        /** 
+         * This method sorts the list in ascending order
+         * It also sets the sorted boolean to true
+        */
         if (size <= 1) {
             return;
         }
@@ -98,6 +139,10 @@ public class DLL {
     }
     
     public void sortedInsert(DNode node) {
+        /**
+         * this method inserts a node into the list with sorted order.
+         * @param node to be added to list
+         */
         if (!sorted) {
             sort();
         }
@@ -121,6 +166,11 @@ public class DLL {
     }
 
     public DNode search(int data) {
+        /**
+         * This method searches the list for a node with a specified value
+         * @param the information about the noted that is wanted to be searched for
+         * @return the node with the data value, or null if not in list
+         */
         DNode current = head;
         while (current != null) {
             if (current.data == data) {
@@ -132,6 +182,9 @@ public class DLL {
     }
 
     public void deleteHead() {
+        /**
+         * this method deletes the head of the list, and decrememnts the size of the list by 1
+         */
         if (head == null) {
             return;
         }
@@ -145,6 +198,9 @@ public class DLL {
         size--;
     }
     public void deleteTail() {
+        /**
+         * this method deletes the tail of the list, and decrememnts the size of the list by 1
+         */
         if (tail == null) {
             return;
         }
@@ -161,6 +217,10 @@ public class DLL {
    
     
     public void delete(DNode node) {
+         /**
+         * this method deletes the first occurance of a node in the list, and decrememnts the size of the list by 1
+         * @param the specified node to be deleted
+         */
         if (head == null) {
             return;
         }
@@ -186,6 +246,9 @@ public class DLL {
 
 
     public void reverse() {
+        /**
+         * This method reverse all the values in the linked list
+         */
         if (head == null) {
             return;
         }
@@ -202,6 +265,9 @@ public class DLL {
     }
   
     public void print() {
+        /**
+         * this method prints out various attributed about the list
+         */
         System.out.println("List length: " + size);
         System.out.println("Sorted status: " + sorted);
         System.out.print("List content: ");
@@ -215,6 +281,9 @@ public class DLL {
 
 
     public void clear() {
+        /** 
+         * This method clears the list, sets size to 0, and the sorted boolean to false
+         */
         head = null;
         tail = null;
         size = 0;

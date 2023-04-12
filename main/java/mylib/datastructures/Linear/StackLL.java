@@ -2,50 +2,86 @@ package main.java.mylib.datastructures.Linear;
 
 import main.java.mylib.datastructures.nodes.DNode;
 
+/**
+ * This class is a stack based off a singly linked list 
+ */
+
 public class StackLL extends SLL{
     public StackLL() {
+        /**
+         * default constructor for stack
+         */
         super();
     }
 
     public void push(DNode node) {
+        /**
+         * This methods adds a new node at the top of the stack
+         * @param the node to be added
+         */
         insertHead(node);
     }
 
     public void pop() {
+        /**
+         * this method deletes the top node from the stack
+         */
         deleteHead();
     }
 
     public DNode peek() {
+        /**
+         * This method gives the top node of the stack
+         * @return the top node of the stack
+         */
         return head;
     }
 
     @Override
     public void insertTail(DNode node) {
+        /**
+         * Overrides the method from SLL because it is not affiliated with stacks
+         */
         // Not affiliated with stacks
     }
 
     @Override
     public void insert(DNode node, int position) {
+        /**
+         * Overrides the method from SLL because it is not affiliated with stacks
+         */
         // Not affiliated with stacks    
     }
 
     @Override
     public void sortedInsert(DNode node) {
+        /**
+         * Overrides the method from SLL because it is not affiliated with stacks
+         */
         // Not affiliated with stacks
         }
 
     @Override
     public void deleteTail() {
+        /**
+         * Overrides the method from SLL because it is not affiliated with stacks
+         */
         // Not affiliated with stacks
         }
 
     @Override
     public void delete(DNode node) {
+        /**
+         * Overrides the method from SLL because it is not affiliated with stacks
+         */
         // Not affiliated with stacks
         }
 
     @Override
     public void sort() {
+        /**
+         * Overrides the method from SLL because it is not affiliated with stacks
+         */
         // Not affiliated with stacks
         }
 
