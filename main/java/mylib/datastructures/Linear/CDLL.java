@@ -216,7 +216,6 @@ public class CDLL extends DLL {
         Dnode n4 = new Dnode(4);
         Dnode n5 = new Dnode(5);
         Dnode n6 = new Dnode(6);
-        Dnode n7 = new Dnode(7);
 
 
         System.out.println("Test default constructor and then inserting 2 at head ");

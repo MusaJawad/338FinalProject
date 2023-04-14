@@ -310,12 +310,9 @@ public class SLL {
     }
     public static void main(String[] args) {
 
-        Dnode n = new Dnode(0);
         Dnode n1 = new Dnode(1);
         Dnode n2 = new Dnode(2);
         Dnode n3 = new Dnode(3);
-        Dnode n4 = new Dnode(4);
-        Dnode n5 = new Dnode(5);
         Dnode n6 = new Dnode(6);
         Dnode n7 = new Dnode(7);
 
