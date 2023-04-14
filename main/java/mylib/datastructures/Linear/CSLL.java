@@ -1,6 +1,6 @@
 package main.java.mylib.datastructures.Linear;
 
-import main.java.mylib.datastructures.nodes.Dnode;
+import main.java.mylib.datastructures.Nodes.DNode;
 
 
 
@@ -17,7 +17,7 @@ public class CSLL extends SLL{
     /**
     Reference to the tail of the list.
     */
-    private Dnode tail;
+    private DNode tail;
 
 
     /**
@@ -32,7 +32,7 @@ public class CSLL extends SLL{
     Constructs a circular singly linked list with the given head node.
     @param head the first node of the list
     */
-    public CSLL(Dnode head) {
+    public CSLL(DNode head) {
         super(head);
         tail = head;
         tail.next = head;
@@ -43,7 +43,7 @@ public class CSLL extends SLL{
     @param node the node to insert
     */
     @Override
-    public void insertHead(Dnode node) {
+    public void insertHead(DNode node) {
         if (head == null) {
             head = node;
             tail = node;
@@ -62,7 +62,7 @@ public class CSLL extends SLL{
     @param node the node to insert
     */
     @Override
-    public void insertTail(Dnode node) {
+    public void insertTail(DNode node) {
         if (head == null) {
             head = node;
             tail = node;
@@ -84,7 +84,7 @@ public class CSLL extends SLL{
     @param position the position at which to insert the node
     */
     @Override
-    public void insert(Dnode node, int position) {
+    public void insert(DNode node, int position) {
         if (position < 1 || position > size + 1) {
             System.out.println("Invalid position");
             return;
@@ -97,7 +97,7 @@ public class CSLL extends SLL{
             insertTail(node);
             return;
         }
-        Dnode current = head;
+        DNode current = head;
         for (int i = 1; i < position - 1; i++) {
             current = current.next;
         }
@@ -140,7 +140,7 @@ public class CSLL extends SLL{
             head = null;
             tail = null;
         } else {
-            Dnode current = head;
+            DNode current = head;
             while (current.next != tail) {
                 current = current.next;
             }
@@ -153,7 +153,7 @@ public class CSLL extends SLL{
 
 
     /**
-    Deletes all nodes and information
+    Deletes all Nodes and information
     */
     @Override
     public void clear() {
@@ -182,9 +182,9 @@ public class CSLL extends SLL{
     }
     public static void main(String[] args) {
 
-        Dnode n1 = new Dnode(1);
-        Dnode n2 = new Dnode(2);
-        Dnode n3 = new Dnode(3);
+        DNode n1 = new DNode(1);
+        DNode n2 = new DNode(2);
+        DNode n3 = new DNode(3);
 
         System.out.println("Test constructor with node input and then inserting 2 at head ");
         CSLL list1 = new CSLL(n1);

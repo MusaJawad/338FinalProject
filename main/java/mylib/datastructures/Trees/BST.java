@@ -2,10 +2,10 @@ package main.java.mylib.datastructures.Trees;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import main.java.mylib.datastructures.nodes.Tnode;
+import main.java.mylib.datastructures.Nodes.TNode;
 
 public class BST {
-    protected Tnode root;
+    protected TNode root;
     
     // Default constructor
     public BST() {
@@ -14,31 +14,31 @@ public class BST {
     
     // Overloaded constructor with root value
     public BST(int val) {
-        root = new Tnode(val, 0, null, null, null);
+        root = new TNode(val, 0, null, null, null);
     }
     
-    // Overloaded constructor with Tnode object as root
-    public BST(Tnode obj) {
+    // Overloaded constructor with TNode object as root
+    public BST(TNode obj) {
         root = obj;
     }
     
     // Getter for root
-    public Tnode getRoot() {
+    public TNode getRoot() {
         return root;
     }
     
     // Setter for root
-    public void setRoot(Tnode node) {
+    public void setRoot(TNode node) {
         root = node;
     }
     
     // Inserts new node with value val into the BST
     public void insert(int val) {
-        Tnode newNode = new Tnode(val, 0, null, null, null);
+        TNode newNode = new TNode(val, 0, null, null, null);
         if (root == null) {
             root = newNode;
         } else {
-            Tnode currNode = root;
+            TNode currNode = root;
             while (true) {
                 if (val < currNode.getData()) {
                     if (currNode.getLeft() == null) {
@@ -60,7 +60,7 @@ public class BST {
             }
         }
     }
-    private void updateBalance(Tnode node) {
+    private void updateBalance(TNode node) {
         if (node == null) {
             return;
         }
@@ -81,7 +81,7 @@ public class BST {
         }
     }
     
-    private int height(Tnode node) {
+    private int height(TNode node) {
         if (node == null) {
             return -1;
         }
@@ -91,11 +91,11 @@ public class BST {
     }
     
     // Inserts existing node into the BST
-    public void insert(Tnode node) {
+    public void insert(TNode node) {
         if (root == null) {
             root = node;
         } else {
-            Tnode currNode = root;
+            TNode currNode = root;
             while (true) {
                 if (node.getData() < currNode.getData()) {
                     if (currNode.getLeft() == null) {
@@ -135,7 +135,7 @@ public void delete(int val) {
  * @param val The value of the node to delete.
  * @return The root of the modified tree.
  */
-private Tnode delete(Tnode node, int val) {
+private TNode delete(TNode node, int val) {
     if (node == null) {
         System.out.println("Value " + val + " is not in the tree.");
         return null;
@@ -152,7 +152,7 @@ private Tnode delete(Tnode node, int val) {
             return node.getLeft();
         }
 
-        Tnode successor = getSuccessor(node.getRight());
+        TNode successor = getSuccessor(node.getRight());
         node.setData(successor.getData());
         node.setRight(delete(node.getRight(), successor.getData()));
     }
@@ -166,8 +166,8 @@ private Tnode delete(Tnode node, int val) {
  * @param node The node to find the successor of.
  * @return The successor node.
  */
-private Tnode getSuccessor(Tnode node) {
-    Tnode current = node;
+private TNode getSuccessor(TNode node) {
+    TNode current = node;
     while (current.getLeft() != null) {
         current = current.getLeft();
     }
@@ -180,8 +180,8 @@ private Tnode getSuccessor(Tnode node) {
  * @param val The value to search for.
  * @return The node with the given value, or null if it is not found.
  */
-public Tnode search(int val) {
-    Tnode current = root;
+public TNode search(int val) {
+    TNode current = root;
     while (current != null) {
         if (val == current.getData()) {
             return current;
@@ -204,7 +204,7 @@ public void printInOrder() {
     System.out.println();
 }
 
-private void printInOrder(Tnode node) {
+private void printInOrder(TNode node) {
     if (node == null) {
         return;
     }
@@ -221,13 +221,13 @@ public void printBF() {
         return;
     }
 
-    Queue<Tnode> queue = new LinkedList<>();
+    Queue<TNode> queue = new LinkedList<>();
     queue.add(root);
 
     while (!queue.isEmpty()) {
         int size = queue.size();
         for (int i = 0; i < size; i++) {
-            Tnode node = queue.remove();
+            TNode node = queue.remove();
             System.out.print(node.getData() + " ");
             if (node.getLeft() != null) {
                 queue.add(node.getLeft());
@@ -274,7 +274,7 @@ public void printBF() {
         
 
         System.out.println("Test search value of 7");
-        Tnode node = bst.search(7);
+        TNode node = bst.search(7);
         if (node != null) {
             System.out.println("Found node with value " + node.getData());
         } else {

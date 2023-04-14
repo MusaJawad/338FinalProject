@@ -1,17 +1,17 @@
 package main.java.mylib.datastructures.Linear;
 
-import main.java.mylib.datastructures.nodes.Dnode;
+import main.java.mylib.datastructures.Nodes.DNode;
 /**
  * This is a class for a singly linked list
  */
 public class SLL {
     /**
-     * Contains values for the head and tail of the Dnode
+     * Contains values for the head and tail of the DNode
      * an integer variable with the size of the list
      * a boolean variable for whether the list is sorted or not
      */
-    protected Dnode head;
-    private Dnode tail;
+    protected DNode head;
+    private DNode tail;
     protected int size;
     protected boolean sorted;
 
@@ -19,7 +19,7 @@ public class SLL {
     public SLL() {
         /**
          * default constructor for SLL
-         * sets the head and tails of the Dnode to null, and size to 0
+         * sets the head and tails of the DNode to null, and size to 0
          * the sorted flag is set to true
          */
         head = null;
@@ -28,11 +28,11 @@ public class SLL {
         sorted = true;
     }
 
-    public SLL(Dnode head) {
+    public SLL(DNode head) {
         /**
          * Constructor for SLl, sets the head and tail reference to head, and size to 1
          * The sorted flag is true because there is only one element
-         * @param head of Dnode
+         * @param head of DNode
          */
         this.head = head;
         this.tail = head;
@@ -40,7 +40,7 @@ public class SLL {
         sorted = true;
     }
 
-    public void insertHead(Dnode node) {
+    public void insertHead(DNode node) {
         /**
          * This method inserts a new node at the head of the list.
          * The size is increased by 1, and it is not sorted
@@ -57,7 +57,7 @@ public class SLL {
         sorted = false;
     }
 
-    public void insertTail(Dnode node) {    
+    public void insertTail(DNode node) {    
         /**
         * This method inserts a new node at the tail of the list.
         * The size is increased by 1, and it is not sorted
@@ -75,7 +75,7 @@ public class SLL {
     }
 
    
-    public void insert(Dnode node, int position) {
+    public void insert(DNode node, int position) {
         /**
          * This method inserts a new node at the a specified position of the list.
          * The size is increased by 1, and it is not sorted
@@ -96,7 +96,7 @@ public class SLL {
             insertTail(node);
             return;
         }
-        Dnode current = head;
+        DNode current = head;
         for (int i = 1; i < position; i++) {
             current = current.next;
         }
@@ -107,7 +107,7 @@ public class SLL {
     }
 
     
-    public void sortedInsert(Dnode node) {
+    public void sortedInsert(DNode node) {
         /**
          * this method inserts a node into the list with sorted order.
          * @param node to be added to list
@@ -123,7 +123,7 @@ public class SLL {
             insertTail(node);
             return;
         }
-        Dnode current = head;
+        DNode current = head;
         while (current.next != null && current.next.data < node.data) {
             current = current.next;
         }
@@ -132,13 +132,13 @@ public class SLL {
         size++;
     }
 
-    public Dnode search(int data) {
+    public DNode search(int data) {
         /**
          * This method searches the list for a node with a specified value
          * @param the information about the noted that is wanted to be searched for
          * @return the node with the data value, or null if not in list
          */
-        Dnode current = head;
+        DNode current = head;
         while (current != null) {
             if (current.data == data) {
                 return current;
@@ -170,7 +170,7 @@ public class SLL {
             head = null;
             tail = null;
         } else {
-            Dnode current = head;
+            DNode current = head;
             while (current.next != tail) {
                 current = current.next;
             }
@@ -192,7 +192,7 @@ public class SLL {
             deleteHead();
             return;
         }
-        Dnode current = head;
+        DNode current = head;
         while (current.next != null && current.next.data != data) {
             current = current.next;
         }
@@ -206,7 +206,7 @@ public class SLL {
         }
     }
 
-    public void delete(Dnode node) {
+    public void delete(DNode node) {
         /**
          * this method deletes the first occurance of a node in the list, and decrememnts the size of the list by 1
          * @param the specified node to be deleted
@@ -222,7 +222,7 @@ public class SLL {
             deleteTail();
             return;
         }
-        Dnode current = head;
+        DNode current = head;
 
         while (current.next != node && current.next != null) {
             current = current.next;
@@ -242,15 +242,15 @@ public class SLL {
         if (size <= 1) {
             return;
         }
-        Dnode sortedHead = null;
-        Dnode current = head;
+        DNode sortedHead = null;
+        DNode current = head;
         while (current != null) {
-            Dnode next = current.next;
+            DNode next = current.next;
             if (sortedHead == null || current.data < sortedHead.data) {
                 current.next = sortedHead;
                 sortedHead = current;
             } else {
-                Dnode search = sortedHead;
+                DNode search = sortedHead;
                 while (search.next != null && current.data > search.next.data) {
                     search = search.next;
                 }
@@ -279,7 +279,7 @@ public class SLL {
         System.out.println("List length: " + size);
         System.out.println("Sorted status: " + isSorted());
         System.out.print("List content: ");
-        Dnode current = head;
+        DNode current = head;
         while (current != null) {
             System.out.print(current.data + " ");
             current = current.next;
@@ -299,7 +299,7 @@ public class SLL {
         if (size <= 1) {
             return true;
         }
-        Dnode current = head;
+        DNode current = head;
         while (current.next != null) {
             if (current.data > current.next.data) {
                 return false;
@@ -310,11 +310,11 @@ public class SLL {
     }
     public static void main(String[] args) {
 
-        Dnode n1 = new Dnode(1);
-        Dnode n2 = new Dnode(2);
-        Dnode n3 = new Dnode(3);
-        Dnode n6 = new Dnode(6);
-        Dnode n7 = new Dnode(7);
+        DNode n1 = new DNode(1);
+        DNode n2 = new DNode(2);
+        DNode n3 = new DNode(3);
+        DNode n6 = new DNode(6);
+        DNode n7 = new DNode(7);
 
 
         System.out.println("Test constructor with node input 1");
@@ -347,7 +347,7 @@ public class SLL {
 
 
         System.out.println("Test search data 3"); 
-        Dnode node = sll.search(3);
+        DNode node = sll.search(3);
         System.out.println(node.data); // Expected output: 3
         System.out.println();
 

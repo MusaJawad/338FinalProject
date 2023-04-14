@@ -1,13 +1,13 @@
 package main.java.mylib.datastructures.Linear;
 
-import main.java.mylib.datastructures.nodes.Dnode;
+import main.java.mylib.datastructures.Nodes.DNode;
 /**
  * CDLL is a circular doubly-linked list that extends DLL.
  */
 public class CDLL extends DLL {
 
-    private Dnode head;
-    private Dnode tail;
+    private DNode head;
+    private DNode tail;
 
     /**
      * Constructs an empty CDLL object.
@@ -21,7 +21,7 @@ public class CDLL extends DLL {
      *
      * @param node the node to be used as the head and tail of the CDLL
      */
-    public CDLL(Dnode node) {
+    public CDLL(DNode node) {
         super(node);
         head = node;
         tail = node;
@@ -35,7 +35,7 @@ public class CDLL extends DLL {
      * @param node the node to be inserted
      */
     @Override
-    public void insertHead(Dnode node) {
+    public void insertHead(DNode node) {
         if (head == null) {
             head = node;
             tail = node;
@@ -57,7 +57,7 @@ public class CDLL extends DLL {
      * @param node the node to be inserted
      */
     @Override
-    public void insertTail(Dnode node) {
+    public void insertTail(DNode node) {
         if (tail == null) {
             head = node;
             tail = node;
@@ -80,11 +80,11 @@ public class CDLL extends DLL {
      * @param position the position at which to insert the node
      */
     @Override
-    public void insert(Dnode node, int position) {
+    public void insert(DNode node, int position) {
         if (position == 0) {
             insertHead(node);
         } else {
-            Dnode current = head;
+            DNode current = head;
             int i = 0;
             while (current != null && i < position - 1) {
                 current = current.next;
@@ -145,7 +145,7 @@ public class CDLL extends DLL {
      * @param node the node to be deleted
      */
     @Override
-    public void delete(Dnode node) {
+    public void delete(DNode node) {
         if (node == null) {
             return;
         }
@@ -173,8 +173,8 @@ public class CDLL extends DLL {
             return;
         }
     
-        Dnode current = head;
-        Dnode temp = null;
+        DNode current = head;
+        DNode temp = null;
     
         do {
             temp = current.prev;
@@ -196,7 +196,7 @@ public class CDLL extends DLL {
     public void print() {
         System.out.print("List content: ");
         if (head != null) {
-            Dnode current = head;
+            DNode current = head;
             do {
                 System.out.print(current.data + " ");
                 current = current.next;
@@ -210,12 +210,12 @@ public class CDLL extends DLL {
     public static void main(String[] args) {
 
 
-        Dnode n1 = new Dnode(1);
-        Dnode n2 = new Dnode(2);
-        Dnode n3 = new Dnode(3);
-        Dnode n4 = new Dnode(4);
-        Dnode n5 = new Dnode(5);
-        Dnode n6 = new Dnode(6);
+        DNode n1 = new DNode(1);
+        DNode n2 = new DNode(2);
+        DNode n3 = new DNode(3);
+        DNode n4 = new DNode(4);
+        DNode n5 = new DNode(5);
+        DNode n6 = new DNode(6);
 
 
         System.out.println("Test default constructor and then inserting 2 at head ");
@@ -256,7 +256,7 @@ public class CDLL extends DLL {
         System.out.println();
 
         System.out.println("Test delete data 5");
-        Dnode node = cdll.search(5);
+        DNode node = cdll.search(5);
         cdll.delete(node);
         cdll.print(); // Expected output: List content: 1 6 3
         System.out.println();

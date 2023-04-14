@@ -1,5 +1,5 @@
 package main.java.mylib.datastructures.Trees;
-import main.java.mylib.datastructures.nodes.Tnode;
+import main.java.mylib.datastructures.Nodes.TNode;
 
     /**
      * AVL is a self-balancing binary search tree that extends the BST class.
@@ -29,7 +29,7 @@ import main.java.mylib.datastructures.nodes.Tnode;
      * 
      * @param obj the root node of the tree
      */
-    public AVL(Tnode obj) {
+    public AVL(TNode obj) {
         super(obj);
         balance(root);
     }
@@ -39,7 +39,7 @@ import main.java.mylib.datastructures.nodes.Tnode;
      * 
      * @param node the root of the subtree to be balanced
      */
-    private void balance(Tnode node) {
+    private void balance(TNode node) {
         if (node == null) {
             return;
         }
@@ -75,7 +75,7 @@ import main.java.mylib.datastructures.nodes.Tnode;
      * @param node the node whose balance factor is to be computed
      * @return the balance factor of the node
      */
-    private int getBalanceFactor(Tnode node) {
+    private int getBalanceFactor(TNode node) {
         if (node == null) {
             return 0;
         }
@@ -92,8 +92,8 @@ import main.java.mylib.datastructures.nodes.Tnode;
      * @param node the root of the subtree to be rotated
      * @return the new root of the subtree
      */
-    private Tnode rotateLeft(Tnode node) {
-        Tnode newRoot = node.right;
+    private TNode rotateLeft(TNode node) {
+        TNode newRoot = node.right;
         node.right = newRoot.left;
         if (newRoot.left != null) {
             newRoot.left.parent = node;
@@ -110,8 +110,8 @@ import main.java.mylib.datastructures.nodes.Tnode;
      * @param node the root of the subtree to be rotated
      * @return the new root of the subtree
      */
-    private Tnode rotateRight(Tnode node) {
-        Tnode newRoot = node.left;
+    private TNode rotateRight(TNode node) {
+        TNode newRoot = node.left;
         node.left = newRoot.right;
         if (newRoot.right != null) {
             newRoot.right.parent = node;
@@ -129,11 +129,11 @@ import main.java.mylib.datastructures.nodes.Tnode;
         */
         @Override
         public void insert(int val) {
-            Tnode newNode = new Tnode(val, 0, null, null, null);
+            TNode newNode = new TNode(val, 0, null, null, null);
             if (root == null) {
                 root = newNode;
             } else {
-                Tnode currNode = root;
+                TNode currNode = root;
                 while (true) {
                     if (val < currNode.getData()) {
                         if (currNode.getLeft() == null) {
@@ -162,24 +162,24 @@ import main.java.mylib.datastructures.nodes.Tnode;
         @param node the node that was just inserted
         */
                 
-        private void updateBalance(Tnode node) {
+        private void updateBalance(TNode node) {
             if (node == null) {
                 return;
             }
         }
 
         /**
-        Inserts a new Tnode object into the AVL tree.
-        @param node the Tnode object to insert
+        Inserts a new TNode object into the AVL tree.
+        @param node the TNode object to insert
         */
         @Override
-        public void insert(Tnode node) {
+        public void insert(TNode node) {
             super.insert(node);
             balance(node);
         }
         
         
-        private int height(Tnode node) {
+        private int height(TNode node) {
             if (node == null) {
                 return -1;
             }
@@ -198,13 +198,13 @@ import main.java.mylib.datastructures.nodes.Tnode;
      * @param node the starting node for the search
      * @return the node with the specified value, or null if not found
      */
-    private Tnode geTnode(int val, Tnode node) {
+    private TNode geTNode(int val, TNode node) {
         if (node == null || node.data == val) {
             return node;
         } else if (node.data < val) {
-            return geTnode(val, node.right);
+            return geTNode(val, node.right);
         } else {
-            return geTnode(val, node.left);
+            return geTNode(val, node.left);
         }
     }
 
@@ -217,8 +217,8 @@ import main.java.mylib.datastructures.nodes.Tnode;
      * @return the node with the specified value, or null if not found
      */
         
-    public Tnode geTnode(int val) {
-        return geTnode(val, root);
+    public TNode geTNode(int val) {
+        return geTNode(val, root);
     }
  
     
