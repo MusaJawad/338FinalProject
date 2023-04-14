@@ -83,6 +83,25 @@ public class StackLL extends SLL{
          * Overrides the method from SLL because it is not affiliated with stacks
          */
         // Not affiliated with stacks
-        }
+    }
 
+        public static void main(String[] args) {
+
+            System.out.println("Test default constructor and push with values of 1,2,3");
+            StackLL stack = new StackLL();
+            stack.push(new DNode(1));
+            stack.push(new DNode(2));
+            stack.push(new DNode(3));
+            stack.print(); // Expected output: List length: 3, Sorted status: false, List content: 3 2 1
+            System.out.println();
+
+            System.out.println("Test pop");
+            stack.pop();
+            stack.print(); // Expected output: List length: 2, Sorted status: false, List content: 2 1
+            System.out.println();
+
+            System.out.println("Test peak");
+            DNode top = stack.peek();
+            System.out.println(top.data); // Expected output: 2
+        }
 }

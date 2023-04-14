@@ -220,6 +220,38 @@ import main.java.mylib.datastructures.nodes.TNode;
     public TNode getNode(int val) {
         return getNode(val, root);
     }
+ 
     
+    public static void main(String[] args) {
+
+        System.out.println("Test constructor with value input of 10 and insert values of 1,2,3,7,8,9 ");
+        AVL avl = new AVL(10);
+        avl.insert(1);
+        avl.insert(2);
+        avl.insert(3);
+        avl.insert(7);
+        avl.insert(8);
+        avl.insert(9);
+        System.out.println();
+        
+        System.out.println("Test Print in order");
+        avl.printInOrder();
+        System.out.println();
+
+        System.out.println("Test PrintBF ");
+        avl.printBF();
+        System.out.println();
+
+        System.out.println("Test Delete with a value 3");
+        avl.delete(3);
+        avl.printInOrder();
+        System.out.println();
+
+
+        
+    }
+    
+
+
 }
     

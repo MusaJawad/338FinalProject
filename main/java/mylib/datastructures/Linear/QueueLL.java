@@ -97,5 +97,25 @@ public class QueueLL extends SLL {
         System.out.println("<- Rear");
     }
 
+    public static void main(String[] args) {
+
+        System.out.println("Test constructor with node input 1");
+        QueueLL queue1 = new QueueLL(new DNode(1));
+        queue1.display();
+        System.out.println();
+
+
+        System.out.println("Test default constructor and enqueue with values 1,2 and 3");
+        QueueLL queue = new QueueLL();
+        queue.enqueue(new DNode(1));
+        queue.enqueue(new DNode(2));
+        queue.enqueue(new DNode(3));
+        queue.display(); // Expected output: Queue length: 3, Front -> 1 2 3 <- Rear
+        System.out.println();
+
+        System.out.println("Test dequeue with values 1,2 and 3");
+        queue.dequeue();
+        queue.display(); // Expected output: Queue length: 2, Front -> 2 3 <- Rear
+    }
     
 }

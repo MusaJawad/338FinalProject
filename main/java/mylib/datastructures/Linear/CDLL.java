@@ -206,4 +206,65 @@ public class CDLL extends DLL {
         }
         System.out.println();
     }
+
+    public static void main(String[] args) {
+
+
+        DNode n1 = new DNode(1);
+        DNode n2 = new DNode(2);
+        DNode n3 = new DNode(3);
+        DNode n4 = new DNode(4);
+        DNode n5 = new DNode(5);
+        DNode n6 = new DNode(6);
+        DNode n7 = new DNode(7);
+
+
+        System.out.println("Test default constructor and then inserting 2 at head ");
+        CDLL cdll1 = new CDLL();
+        cdll1.insertHead(n2);
+        cdll1.print(); // Expected output: List content: 2
+        System.out.println();
+
+
+        System.out.println("Test constructor with node input 1 and then inserting 2 at head ");
+        CDLL cdll = new CDLL(n1);
+        cdll.insertHead(n2);
+        cdll.print(); // Expected output: List content: 2 1
+        System.out.println();
+
+
+        System.out.println("Test insertTail by adding the tail 3 and then 4 respectively");
+        cdll.insertTail(n3);
+        cdll.insertTail(n4);
+        cdll.print(); // Expected output: List content: 2 1 3 4
+        System.out.println();
+
+        System.out.println("Test insert by inserting 5 at index 2 and 6 at index 3");
+        cdll.insert(n5, 2);
+        cdll.insert(n6, 3);
+        cdll.print(); // Expected output: List content:  2 1 5 6 3 4 
+        System.out.println();
+
+
+        System.out.println("Test deleteHead");
+        cdll.deleteHead();
+        cdll.print(); // Expected output: List content: 1 5 6 3 4 
+        System.out.println();
+
+        System.out.println("Test deleteTail");
+        cdll.deleteTail();
+        cdll.print(); // Expected output: List content: 1 5 6 3 
+        System.out.println();
+
+        System.out.println("Test delete data 5");
+        DNode node = cdll.search(5);
+        cdll.delete(node);
+        cdll.print(); // Expected output: List content: 1 6 3
+        System.out.println();
+
+        System.out.println("Test reverse");
+        cdll.reverse();
+        cdll.print(); // Expected output: List content:  3 6 1
+
+    }
 }

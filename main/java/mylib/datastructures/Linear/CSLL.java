@@ -180,5 +180,48 @@ public class CSLL extends SLL{
 
         }
     }
+    public static void main(String[] args) {
+
+        DNode n1 = new DNode(1);
+        DNode n2 = new DNode(2);
+        DNode n3 = new DNode(3);
+
+        System.out.println("Test constructor with node input and then inserting 2 at head ");
+        CSLL list1 = new CSLL(n1);
+        list1.insertHead(n2);
+        list1.print(); // Should print: 2,1 Tail: 1
+        System.out.println();
+
+
+        System.out.println("Test default constructor and then inserting 1 at head ");
+        CSLL list = new CSLL();
+        list.insertHead(n1);
+        list.print(); // Should print: 1, Tail: 1
+        System.out.println();
+
+        System.out.println("Test inserting 2 at tail");
+        list.insertTail(n2);
+        list.print(); // Should print: 1, 2, Tail: 2
+        System.out.println();
+
+        System.out.println("Test inserting 3 at position 2");
+        list.insert(n3, 2);
+        list.print(); // Should print: 1, 3, 2, Tail: 2
+        System.out.println();
+
+        System.out.println("Test deleting a tail");
+        list.deleteTail();
+        list.print(); // Should print: 1,3 Tail: 3
+        System.out.println();
+
+        System.out.println("Test delete a head");
+        list.deleteHead();
+        list.print(); // Should print: 3 Tail: 2
+        System.out.println();
+
+        System.out.println("Test clearing the list");
+        list.clear();
+        list.print(); // Should print nothing
+    }
 
     }

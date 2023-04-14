@@ -240,5 +240,47 @@ public void printBF() {
     }
 }
 
+    public static void main(String[] args) {
+
+        System.out.println("Test default constructor and insert values of 5,3,7,1,9,4,6,8");
+        BST bst = new BST();
+        // Insert some nodes into the BST
+        bst.insert(5);
+        bst.insert(3);
+        bst.insert(7);
+        bst.insert(1);
+        bst.insert(9);
+        bst.insert(4);
+        bst.insert(6);
+        bst.insert(8);
+        System.out.println();
+
+        
+        System.out.println("Test Print in order");  
+        bst.printInOrder();
+        System.out.println();
+        System.out.println();
+
+        System.out.println("Test PrintBF");  
+        bst.printBF();
+        System.out.println();
+        System.out.println();
+
+
+        System.out.println("test deleting with value 5 ");
+        bst.delete(5);        
+        bst.printInOrder();
+        System.out.println();
+        
+
+        System.out.println("Test search value of 7");
+        TNode node = bst.search(7);
+        if (node != null) {
+            System.out.println("Found node with value " + node.getData());
+        } else {
+            System.out.println("Node not found");
+        }
+    }
+
 }
 

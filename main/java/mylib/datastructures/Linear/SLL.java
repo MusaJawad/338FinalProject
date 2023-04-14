@@ -308,5 +308,72 @@ public class SLL {
         }
         return true;
     }
+    public static void main(String[] args) {
+
+        DNode n = new DNode(0);
+        DNode n1 = new DNode(1);
+        DNode n2 = new DNode(2);
+        DNode n3 = new DNode(3);
+        DNode n4 = new DNode(4);
+        DNode n5 = new DNode(5);
+        DNode n6 = new DNode(6);
+        DNode n7 = new DNode(7);
+
+
+        System.out.println("Test constructor with node input 1");
+        SLL sll1 = new SLL(n1);
+        sll1.print();
+        System.out.println();
+
+        System.out.println("Test default constructor and 2 insertHeads with values of 1 and 2");
+        SLL sll = new SLL();
+        sll.insertHead(n1);
+        sll.insertHead(n2);
+        sll.print(); // Expected output: List length: 2, Sorted status: false, List content:  2 1
+        System.out.println();
+
+        System.out.println("Test insertTail with value of 3"); 
+        sll.insertTail(n3);
+        sll.print(); // Expected output: List length: 3, Sorted status: false, List content: 2 1 3
+        System.out.println();
+
+        System.out.println("Test insert 6 at position 2"); 
+        sll.insert(n6, 2);
+        sll.print(); // Expected output: List length: 7, Sorted status: false, List content: 2 6 1 3
+        System.out.println();
+
+
+        System.out.println("Test sortedInsert with value of 7"); 
+        sll.sortedInsert(n7);
+        sll.print(); // Expected output: List length: 9, Sorted status: true, List content: 1 2 3 6
+        System.out.println();
+
+
+        System.out.println("Test search data 3"); 
+        DNode node = sll.search(3);
+        System.out.println(node.data); // Expected output: 3
+        System.out.println();
+
+        System.out.println("Test deleteHead"); 
+        sll.deleteHead();
+        sll.print(); // Expected output: List length: 8, Sorted status: true, List content: 2 3 6
+        System.out.println();
+
+        System.out.println("Test deleteTail"); 
+        sll.deleteTail();
+        sll.print(); // Expected output: List length: 7, Sorted status: true, List content: 2 3
+        System.out.println();
+
+        System.out.println("Test delete value 3"); 
+        node = sll.search(3);
+        sll.delete(node);
+        sll.print(); // Expected output: List length: 6, Sorted status: true, List content: 2
+        System.out.println();
+
+        System.out.println("Test clear"); 
+        sll.clear();
+        sll.print(); // Expected output: List length: 0, Sorted status: true, List content: 
+
+    }
 
 }

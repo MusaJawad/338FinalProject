@@ -263,6 +263,8 @@ public class DLL {
         head = tail;
         tail = temp;
     }
+
+ 
   
     public void print() {
         /**
@@ -275,6 +277,9 @@ public class DLL {
         while (current != null) {
             System.out.print(current.data + " ");
             current = current.next;
+            if (current == head) { // added condition to break out of the loop
+                break;
+            }
         }
         System.out.println();
     }
@@ -290,7 +295,59 @@ public class DLL {
         sorted = false;
     }
 
+    public static void main(String[] args){
+        DNode n1 = new DNode(1);
+        DNode n2 = new DNode(2);
+        DNode n3 = new DNode(3);
+        DNode n4 = new DNode(4);
+
+
+        System.out.println("Test constructor with node input of 1");
+        DLL test1 = new DLL(n1);
+        test1.print();
+        System.out.println();
+
+        System.out.println("Test Default constructor and insert head with value of 2 and insert tail with value of 3");
+        DLL test = new DLL();
+        test.insertHead(n2);
+        test.insertTail(n3);
+        test.print();
+        System.out.println();
+
+        System.out.println("Insert 1 at index 1 and Insert 4 at index 3");
+        test.insert(n1, 1);
+        test.insert(n4, 3);
+        test.print();
+        System.out.println();
+      
+        System.out.println("Test sort");
+        test.sort();
+        test.print();
+        System.out.println();
+
+        System.out.println("Test reverse");
+        test.reverse();
+        test.print();
+        System.out.println();
+
+        System.out.println("\nTest search of value 3");
+        System.out.println(test.search(3).data);
+
+
+        System.out.println("\nTesting remove with value of 2 and then removing the head and tail");
+        test.delete(n2);
+        test.deleteHead();
+        test.deleteTail();
+        test.print();
+        System.out.println();
+
+        System.out.println("Test clear");
+        test.clear();
+        test.print();
+    }
 }
+
+
 
 
 
