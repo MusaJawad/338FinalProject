@@ -1,6 +1,6 @@
 package main.java.mylib.datastructures.Linear;
 
-import main.java.mylib.datastructures.nodes.DNode;
+import main.java.mylib.datastructures.nodes.Dnode;
 
 /**
  * This class is a Queue data structure based off a singly linked list 
@@ -15,7 +15,7 @@ public class QueueLL extends SLL {
         super();
     }
 
-    public QueueLL(DNode head) {
+    public QueueLL(Dnode head) {
         /**
          * Constructor for queue with a specific head node
          * @param Node for head
@@ -24,7 +24,7 @@ public class QueueLL extends SLL {
     }
 
     @Override
-    public void insertHead(DNode node) {
+    public void insertHead(Dnode node) {
         /**
          * Overrides the method from SLL because it is not affiliated with Queues
          */
@@ -35,7 +35,7 @@ public class QueueLL extends SLL {
      * Override SLL's sortedInsert method with insertTail method
      */
     @Override
-    public void sortedInsert(DNode node) {
+    public void sortedInsert(Dnode node) {
         insertTail(node);
     }
 
@@ -47,7 +47,7 @@ public class QueueLL extends SLL {
         display();
     }
 
-    public void enqueue(DNode node) {
+    public void enqueue(Dnode node) {
         /**
          * This method adds a node at the tail of the Queue
          */
@@ -62,7 +62,7 @@ public class QueueLL extends SLL {
     }
 
     @Override
-    public DNode search(int data) {
+    public Dnode search(int data) {
         /**
          * Overrides the method from SLL because it is not affiliated with queues
          */
@@ -89,7 +89,7 @@ public class QueueLL extends SLL {
          */
         System.out.println("Queue length: " + size);
         System.out.println("Front -> ");
-        DNode current = head;
+        Dnode current = head;
         while (current != null) {
             System.out.print(current.data + " ");
             current = current.next;
@@ -100,16 +100,16 @@ public class QueueLL extends SLL {
     public static void main(String[] args) {
 
         System.out.println("Test constructor with node input 1");
-        QueueLL queue1 = new QueueLL(new DNode(1));
+        QueueLL queue1 = new QueueLL(new Dnode(1));
         queue1.display();
         System.out.println();
 
 
         System.out.println("Test default constructor and enqueue with values 1,2 and 3");
         QueueLL queue = new QueueLL();
-        queue.enqueue(new DNode(1));
-        queue.enqueue(new DNode(2));
-        queue.enqueue(new DNode(3));
+        queue.enqueue(new Dnode(1));
+        queue.enqueue(new Dnode(2));
+        queue.enqueue(new Dnode(3));
         queue.display(); // Expected output: Queue length: 3, Front -> 1 2 3 <- Rear
         System.out.println();
 

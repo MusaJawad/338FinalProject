@@ -3,19 +3,19 @@ package main.java.mylib.datastructures.nodes;
     /**
      * A class representing a general tree node
      */
-public class TNode {
+public class Tnode {
         /** data stored in the node*/
     public int data;
         /** left child of the node*/
-    public TNode left;
+    public Tnode left;
         /** right child of the node*/
-    public TNode right;
+    public Tnode right;
         /** parent  of the node*/
-    public TNode parent;
+    public Tnode parent;
         /** balance of the node*/
     public int balance;
 
-    public TNode() {
+    public Tnode() {
         /** Default constructor, */
         data = 0;
         left = null;
@@ -24,7 +24,7 @@ public class TNode {
         balance = 0;
     }
 
-    public TNode(int data, int balance, TNode parent, TNode left, TNode right) {
+    public Tnode(int data, int balance, Tnode parent, Tnode left, Tnode right) {
         /** Tnode costructor with following values
         * @param data for the data stored in the node
         * @param balance which is the balance factor
@@ -55,7 +55,7 @@ public class TNode {
         this.data = data;
     }
 
-    public TNode getLeft() {
+    public Tnode getLeft() {
          /**
          * getter method for left child
          * @return the left child for the node
@@ -63,7 +63,7 @@ public class TNode {
         return left;
     }
 
-    public void setLeft(TNode left) {
+    public void setLeft(Tnode left) {
         /**
          * setter method for left child
          * @param the left child to be set for Tnode
@@ -71,7 +71,7 @@ public class TNode {
         this.left = left;
     }
 
-    public TNode getRight() {
+    public Tnode getRight() {
         /**
          * getter method for right child
          * @return the right child for the node
@@ -79,7 +79,7 @@ public class TNode {
         return right;
     }
 
-    public void setRight(TNode right) {
+    public void setRight(Tnode right) {
         /**
          * setter method for right child
          * @param the right child to be set for Tnode
@@ -87,7 +87,7 @@ public class TNode {
         this.right = right;
     }
 
-    public TNode getParent() {
+    public Tnode getParent() {
         /**
          * getter method for Parent
          * @return the Parent of the node
@@ -95,7 +95,7 @@ public class TNode {
         return parent;
     }
 
-    public void setParent(TNode parent) {
+    public void setParent(Tnode parent) {
         /**
          * setter method for parent 
          * @param the parent to be set for Tnode

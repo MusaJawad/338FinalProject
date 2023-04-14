@@ -1,6 +1,6 @@
 package main.java.mylib.datastructures.Linear;
 
-import main.java.mylib.datastructures.nodes.DNode;
+import main.java.mylib.datastructures.nodes.Dnode;
 
 /**
  * This is a class for a doubly linked list
@@ -12,8 +12,8 @@ public class DLL {
      * an integer variable with the size of the list
      * a boolean variable for whether the list is sorted or not
      */
-    private DNode head;
-    private DNode tail;
+    private Dnode head;
+    private Dnode tail;
     protected int size;
     protected boolean sorted;
 
@@ -29,7 +29,7 @@ public class DLL {
         sorted = true;
     }
 
-    public DLL(DNode head) {
+    public DLL(Dnode head) {
         /**
          * Constructor for DLL, sets the head and tail reference to head, and size to 1
          * The sorted flag is true because there is only one element
@@ -41,7 +41,7 @@ public class DLL {
         sorted = true;
     }
 
-    public void insertHead(DNode node) {
+    public void insertHead(Dnode node) {
         /**
          * This method inserts a new node at the head of the list.
          * The size is increased by 1, and it is not sorted
@@ -59,7 +59,7 @@ public class DLL {
         sorted = false;
     }
 
-    public void insertTail(DNode node) {
+    public void insertTail(Dnode node) {
         /**
         * This method inserts a new node at the tail of the list.
         * The size is increased by 1, and it is not sorted
@@ -77,7 +77,7 @@ public class DLL {
         sorted = false;
     }
 
-    public void insert(DNode node, int position) {
+    public void insert(Dnode node, int position) {
         /**
          * This method inserts a new node at the a specified position of the list.
          * The size is increased by 1, and it is not sorted
@@ -98,7 +98,7 @@ public class DLL {
             insertTail(node);
             return;
         }
-        DNode current = head;
+        Dnode current = head;
         for (int i = 1; i < position; i++) {
             current = current.next;
         }
@@ -118,10 +118,10 @@ public class DLL {
         if (size <= 1) {
             return;
         }
-        DNode current = head;
+        Dnode current = head;
         while (current.next != null) {
-            DNode minNode = current;
-            DNode search = current.next;
+            Dnode minNode = current;
+            Dnode search = current.next;
             while (search != null) {
                 if (search.data < minNode.data) {
                     minNode = search;
@@ -138,7 +138,7 @@ public class DLL {
         sorted = true;
     }
     
-    public void sortedInsert(DNode node) {
+    public void sortedInsert(Dnode node) {
         /**
          * this method inserts a node into the list with sorted order.
          * @param node to be added to list
@@ -154,7 +154,7 @@ public class DLL {
             insertTail(node);
             return;
         }
-        DNode current = head;
+        Dnode current = head;
         while (current.next != null && current.next.data < node.data) {
             current = current.next;
         }
@@ -165,13 +165,13 @@ public class DLL {
         size++;
     }
 
-    public DNode search(int data) {
+    public Dnode search(int data) {
         /**
          * This method searches the list for a node with a specified value
          * @param the information about the noted that is wanted to be searched for
          * @return the node with the data value, or null if not in list
          */
-        DNode current = head;
+        Dnode current = head;
         while (current != null) {
             if (current.data == data) {
                 return current;
@@ -216,7 +216,7 @@ public class DLL {
     
    
     
-    public void delete(DNode node) {
+    public void delete(Dnode node) {
          /**
          * this method deletes the first occurance of a node in the list, and decrememnts the size of the list by 1
          * @param the specified node to be deleted
@@ -232,7 +232,7 @@ public class DLL {
             deleteTail();
             return;
         }
-        DNode current = head;
+        Dnode current = head;
 
         while (current.next != node && current.next != null) {
             current = current.next;
@@ -252,14 +252,14 @@ public class DLL {
         if (head == null) {
             return;
         }
-        DNode current = head;
+        Dnode current = head;
         while (current != null) {
-            DNode temp = current.prev;
+            Dnode temp = current.prev;
             current.prev = current.next;
             current.next = temp;
             current = current.prev;
         }
-        DNode temp = head;
+        Dnode temp = head;
         head = tail;
         tail = temp;
     }
@@ -273,7 +273,7 @@ public class DLL {
         System.out.println("List length: " + size);
         System.out.println("Sorted status: " + sorted);
         System.out.print("List content: ");
-        DNode current = head;
+        Dnode current = head;
         while (current != null) {
             System.out.print(current.data + " ");
             current = current.next;
@@ -296,10 +296,10 @@ public class DLL {
     }
 
     public static void main(String[] args){
-        DNode n1 = new DNode(1);
-        DNode n2 = new DNode(2);
-        DNode n3 = new DNode(3);
-        DNode n4 = new DNode(4);
+        Dnode n1 = new Dnode(1);
+        Dnode n2 = new Dnode(2);
+        Dnode n3 = new Dnode(3);
+        Dnode n4 = new Dnode(4);
 
 
         System.out.println("Test constructor with node input of 1");
